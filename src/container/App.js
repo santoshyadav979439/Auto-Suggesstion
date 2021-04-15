@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classes from'./App.module.css';
-import axios from 'axios';
+import axios from '../axios/axios';
 import OpstionsComp from '../component/OptionsComp/OptionsComp'
 function App() {
   const [display, setDisplay] = useState(false);
@@ -8,10 +8,8 @@ function App() {
   const [options,setOptions]= useState([])
   useEffect(()=>{
    const timer= setTimeout(()=>{
-     if(search.length>0)
-     setDisplay(true)
-     const query=`?name=${search}`
-      axios.get("https://rickandmortyapi.com/api/character/"+query).then(res=>{
+   const query=`?name=${search}`
+      axios.get("/api/character/"+query).then(res=>{
         const result=res.data.results;
         const data=result.map(el=>{
           return {
@@ -26,10 +24,14 @@ function App() {
    clearTimeout(timer)
  }
   },[search])
+  const selectName=(name)=>{
+    setSearch(name);
+    setDisplay(false);
+  }
   return (
-    <div>
-      <input type ="search" value={search} onChange={(event)=>setSearch(event.target.value)} />
-    {display && <OpstionsComp data={options} />}  
+    <div className={classes.Container}>
+      <input type ="search" value={search} onClick={()=>setDisplay(!display)} onChange={(event)=>setSearch(event.target.value)} placeholder="Type to Search" />
+    {display && <OpstionsComp data={options} selectName={selectName} />}  
     </div>
   );
 }

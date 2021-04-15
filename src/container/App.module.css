@@ -1,3 +1,17 @@
 input{
-  margin: 50px 50px 0px 50px;
+  padding: 10px;
+  height: 30px;
+  width: 255px;
+  border: 1px solid purple;
+  font-size: 18px;
+}
+
+.Container{
+  overflow:auto;
+  display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+text-align: center;
+margin-top: 50px;
 }

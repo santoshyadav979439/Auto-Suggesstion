@@ -1,12 +1,17 @@
 import React from 'react';
 import classes from "./OptionsComp.module.css"
-const OptionsComp = ({data}) => {
+const OptionsComp = ({data,selectName}) => {
     return (
-        <>
+        <div className={classes.OptionContainer}>
             {
-                data.map(el=><div><span key={el.id}>{el.name}</span></div>)
+                data.map(el=><div 
+                    key={el.id}
+                    onClick={()=>selectName(el.name)}
+                    className={classes.Option}><span >{el.name}</span>
+                    
+                    </div>)
             }
-        </>
+        </div>
     );
 };
 

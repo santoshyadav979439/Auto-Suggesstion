@@ -1,3 +1,17 @@
-div{
-    margin-left: 50px;
-  }
+.Option{
+  cursor: pointer;
+   }
+   .OptionContainer{
+    border-width: 0px 1px 1px 1px;
+       background-color: grey;
+       border-style: solid;
+       background-color: whitesmoke;
+       width: 250px;
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+   }
+   .OptionContainer div{
+       border-bottom: 1px solid white;
+   }
+ 
